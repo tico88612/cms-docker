@@ -8,6 +8,7 @@ RUN apt update && \
                 libcups2-dev \
                 libyaml-dev \
                 libffi-dev \
+                gettext-base \
                 iputils-ping \
                 netcat && \
     rm -rf /var/lib/apt/lists/*
