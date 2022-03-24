@@ -16,3 +16,179 @@ services:
     env_file: 
       - ".env"
       - "config/config.env"
+  cms-log:
+    build: 
+      context: .
+      dockerfile: images/cms-log/Dockerfile
+    image: "tico88612/cms-log:latest"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    expose:
+      - "29000"
+    depends_on:
+      - cms-db
+  cms-scoring:
+    build: 
+      context: .
+      dockerfile: images/cms-scoring/Dockerfile
+    image: "tico88612/cms-scoring:latest"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    expose:
+      - "28500"
+    depends_on:
+      - cms-db
+  cms-resource:
+    build: 
+      context: .
+      dockerfile: images/cms-resource/Dockerfile
+    image: "tico88612/cms-resource:latest"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    expose:
+      - "28000"
+    depends_on:
+      - cms-db
+  cms-proxy:
+    build: 
+      context: .
+      dockerfile: images/cms-proxy/Dockerfile
+    image: "tico88612/cms-proxy:latest"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    expose:
+      - "28600"
+    depends_on:
+      - cms-db
+      - cms-web-ranking
+  cms-printing:
+    build: 
+      context: .
+      dockerfile: images/cms-printing/Dockerfile
+    image: "tico88612/cms-printing:latest"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    expose:
+      - "25123"
+    depends_on:
+      - cms-db
+  cms-evaluation:
+    build: 
+      context: .
+      dockerfile: images/cms-evaluation/Dockerfile
+    image: "tico88612/cms-evaluation:latest"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    expose:
+      - "25000"
+    depends_on:
+      - cms-db
+  cms-checker:
+    build: 
+      context: .
+      dockerfile: images/cms-checker/Dockerfile
+    image: "tico88612/cms-checker:latest"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    expose:
+      - "22000"
+    depends_on:
+      - cms-db
+      - cms-log
+      - cms-scoring
+      - cms-resource
+      - cms-proxy
+      - cms-printing
+      - cms-evaluation
+      - cms-web-admin
+      - cms-web-ranking
+      - cms-web-contest
+      - cms-worker-0
+      - cms-worker-1
+        
+  # web services
+  cms-web-ranking:
+    build: 
+      context: .
+      dockerfile: images/cms-web-ranking/Dockerfile
+    image: "tico88612/cms-web-ranking:latest"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    ports:
+      - "8890:8890"
+    depends_on:
+      - cms-db
+  cms-web-admin:
+    build: 
+      context: .
+      dockerfile: images/cms-web-admin/Dockerfile
+    image: "tico88612/cms-web-admin:latest"
+    ports:
+      - "8889:8889"
+    expose:
+      - "21100"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    depends_on:
+      - cms-db
+  cms-web-contest:
+    build: 
+      context: .
+      dockerfile: images/cms-web-contest/Dockerfile
+    image: "tico88612/cms-web-contest:latest"
+    ports:
+      - "8888:8888"
+    expose:
+      - "21000"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    depends_on:
+      - cms-db
+
+  # workers
+  cms-worker-0:
+    build:
+      context: .
+      dockerfile: images/cms-worker/Dockerfile
+    image: "tico88612/cms-worker:latest"
+    expose:
+      - "26000"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    environment:
+      - CMS_WORKER_NAME=cms-worker-0
+      - CMS_WORKER_0=0.0.0.0
+    depends_on:
+      - cms-db
+    privileged: true
+
+  cms-worker-1:
+    build:
+      context: .
+      dockerfile: images/cms-worker/Dockerfile
+    image: "tico88612/cms-worker:latest"
+    expose:
+      - "26000"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    environment:
+      - CMS_WORKER_NAME=cms-worker-1
+      - CMS_WORKER_1=0.0.0.0
+    depends_on:
+      - cms-db
+    privileged: true
+
+volumes:
+  db-data:

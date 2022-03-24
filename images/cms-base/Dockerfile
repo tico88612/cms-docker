@@ -2,7 +2,8 @@ FROM ubuntu:20.04
 RUN apt update && \
     apt install -yy --no-install-recommends \
                 build-essential \
-                python3-dev \
+                python3.8 \
+                python3.8-dev \
                 python3-pip \
                 libpq-dev \
                 libcups2-dev \
