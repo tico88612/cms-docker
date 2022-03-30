@@ -18,6 +18,13 @@ pyyaml>=5.3,<5.4  # http://pyyaml.org/wiki/PyYAML
 ...
 ```
 
+## Other & TO-DO List
+
+Pull Request Welcome!
+
+- [ ] GitHub Action Build & Push Image
+- [ ] Helm Chart Version (Kubernetes)
+
 ## Reference project
 
 [np-overflow/k8s-cms](https://github.com/np-overflow/k8s-cms)

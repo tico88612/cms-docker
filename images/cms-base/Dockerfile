@@ -15,7 +15,6 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd --user-group --home-dir /cms cmsuser
-# USER cmsuser
 
 RUN mkdir /cms
 COPY dependency/cms /cms
