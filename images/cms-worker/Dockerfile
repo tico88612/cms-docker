@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fp-compiler \
     cgroup-lite zip \
     php7.4-cli php7.4-fpm \
+    haskell-platform \
     texlive-latex-base a2ps \
     phppgadmin a2ps haskell-platform rustc \
     mono-mcs \
