@@ -4,6 +4,7 @@ services:
   cms-db: 
     image: "postgres:14"
     container_name: "cms-db"
+    restart: on-failure
     environment:
       - POSTGRES_DB=cmsdb
       - POSTGRES_USER=cmsuser
@@ -22,6 +23,7 @@ services:
       dockerfile: images/cms-log/Dockerfile
     image: "tico88612/cms-log:latest"
     container_name: "cms-log"
+    restart: on-failure
     env_file: 
       - ".env"
       - "config/config.env"
@@ -35,6 +37,7 @@ services:
       dockerfile: images/cms-scoring/Dockerfile
     image: "tico88612/cms-scoring:latest"
     container_name: "cms-scoring"
+    restart: on-failure
     env_file: 
       - ".env"
       - "config/config.env"
@@ -48,6 +51,7 @@ services:
       dockerfile: images/cms-resource/Dockerfile
     image: "tico88612/cms-resource:latest"
     container_name: "cms-resource"
+    restart: on-failure
     env_file: 
       - ".env"
       - "config/config.env"
@@ -61,6 +65,7 @@ services:
       dockerfile: images/cms-proxy/Dockerfile
     image: "tico88612/cms-proxy:latest"
     container_name: "cms-proxy"
+    restart: on-failure
     env_file: 
       - ".env"
       - "config/config.env"
@@ -75,6 +80,7 @@ services:
       dockerfile: images/cms-printing/Dockerfile
     image: "tico88612/cms-printing:latest"
     container_name: "cms-printing"
+    restart: on-failure
     env_file: 
       - ".env"
       - "config/config.env"
@@ -101,6 +107,7 @@ services:
       dockerfile: images/cms-checker/Dockerfile
     image: "tico88612/cms-checker:latest"
     container_name: "cms-checker"
+    restart: on-failure
     env_file: 
       - ".env"
       - "config/config.env"
@@ -128,6 +135,7 @@ services:
       dockerfile: images/cms-web-ranking/Dockerfile
     image: "tico88612/cms-web-ranking:latest"
     container_name: "cms-web-ranking"
+    restart: on-failure
     env_file: 
       - ".env"
       - "config/config.env"
@@ -141,6 +149,7 @@ services:
       dockerfile: images/cms-web-admin/Dockerfile
     image: "tico88612/cms-web-admin:latest"
     container_name: "cms-web-admin"
+    restart: on-failure
     ports:
       - "8889:8889"
     expose:
@@ -156,6 +165,7 @@ services:
       dockerfile: images/cms-web-contest/Dockerfile
     image: "tico88612/cms-web-contest:latest"
     container_name: "cms-web-contest"
+    restart: on-failure
     ports:
       - "8888:8888"
     expose:
@@ -173,6 +183,7 @@ services:
       dockerfile: images/cms-worker/Dockerfile
     image: "tico88612/cms-worker:latest"
     container_name: "cms-worker-0"
+    restart: on-failure
     expose:
       - "26000"
     env_file: 
@@ -191,6 +202,7 @@ services:
       dockerfile: images/cms-worker/Dockerfile
     image: "tico88612/cms-worker:latest"
     container_name: "cms-worker-1"
+    restart: on-failure
     expose:
       - "26000"
     env_file: 
@@ -209,6 +221,7 @@ services:
       dockerfile: images/cms-worker/Dockerfile
     image: "tico88612/cms-worker:latest"
     container_name: "cms-worker-2"
+    restart: on-failure
     expose:
       - "26000"
     env_file: 
