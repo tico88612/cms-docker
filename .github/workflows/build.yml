@@ -1,0 +1,31 @@
+name: CMS Base Image
+
+on:
+  push:
+    branches: [ "master", "feature/github-actions" ]
+    # paths:
+    #   - 'images/**'
+
+jobs:
+  base-build:
+    name: CMS Base Image Build
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: CMS Base Image Build & push
+      uses: docker/build-push-action@v3
+      with:
+        file: images/cms-base/Dockerfile
+        context: .
+        push: true
+        tags: tico88612/cms-base:latest
