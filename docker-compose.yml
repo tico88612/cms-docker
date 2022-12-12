@@ -127,6 +127,7 @@ services:
       - cms-worker-0
       - cms-worker-1
       - cms-worker-2
+      - cms-worker-3
         
   # web services
   cms-web-ranking:
@@ -230,6 +231,25 @@ services:
     environment:
       - CMS_WORKER_NAME=cms-worker-2
       - CMS_WORKER_2=0.0.0.0
+    depends_on:
+      - cms-db
+    privileged: true
+
+  cms-worker-3:
+    build:
+      context: .
+      dockerfile: images/cms-worker/Dockerfile
+    image: "tico88612/cms-worker:latest"
+    container_name: "cms-worker-2"
+    restart: on-failure
+    expose:
+      - "26000"
+    env_file: 
+      - ".env"
+      - "config/config.env"
+    environment:
+      - CMS_WORKER_NAME=cms-worker-3
+      - CMS_WORKER_3=0.0.0.0
     depends_on:
       - cms-db
     privileged: true
