@@ -244,7 +244,7 @@ services:
       context: .
       dockerfile: images/cms-worker/Dockerfile
     image: "tico88612/cms-worker:latest"
-    container_name: "cms-worker-2"
+    container_name: "cms-worker-3"
     restart: on-failure
     expose:
       - "26000"
