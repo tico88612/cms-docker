@@ -9,6 +9,8 @@ services:
       - POSTGRES_DB=cmsdb
       - POSTGRES_USER=cmsuser
       - POSTGRES_PASSWORD=example
+    volumes:
+      - "./data/db:/var/lib/postgresql/data"
   cms-db-init:
     image: "tico88612/cms-db-init:latest"
     container_name: "cms-db-init"
@@ -140,6 +142,8 @@ services:
     env_file: 
       - ".env"
       - "config/config.env"
+    volumes:
+      - "./data/ranking:/var/local/lib/cms/ranking"
     ports:
       - "8890:8890"
     depends_on:
@@ -253,6 +257,3 @@ services:
     depends_on:
       - cms-db
     privileged: true
-
-volumes:
-  db-data:
