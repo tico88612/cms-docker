@@ -3,8 +3,8 @@ FROM ubuntu:20.04
 RUN mkdir /cms
 RUN mkdir /scripts
 
-ENV HOME=/cms
-ENV PYTHONPATH=/cms
+ARG HOME=/cms
+ARG PYTHONPATH=/cms
 WORKDIR /cms
 
 # copy cms system
