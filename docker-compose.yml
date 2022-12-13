@@ -4,7 +4,7 @@ services:
   cms-db: 
     image: "postgres:14"
     container_name: "cms-db"
-    restart: on-failure
+    restart: unless-stopped
     env_file: 
       - ".env"
     volumes:
@@ -26,7 +26,7 @@ services:
       dockerfile: images/cms-log/Dockerfile
     image: "cms-log:latest"
     container_name: "cms-log"
-    restart: on-failure
+    restart: unless-stopped
     env_file: 
       - ".env"
       - "config/config.env"
@@ -40,7 +40,7 @@ services:
       dockerfile: images/cms-scoring/Dockerfile
     image: "cms-scoring:latest"
     container_name: "cms-scoring"
-    restart: on-failure
+    restart: unless-stopped
     env_file: 
       - ".env"
       - "config/config.env"
@@ -54,7 +54,7 @@ services:
       dockerfile: images/cms-resource/Dockerfile
     image: "cms-resource:latest"
     container_name: "cms-resource"
-    restart: on-failure
+    restart: unless-stopped
     env_file: 
       - ".env"
       - "config/config.env"
@@ -68,7 +68,7 @@ services:
       dockerfile: images/cms-proxy/Dockerfile
     image: "cms-proxy:latest"
     container_name: "cms-proxy"
-    restart: on-failure
+    restart: unless-stopped
     env_file: 
       - ".env"
       - "config/config.env"
@@ -83,7 +83,7 @@ services:
       dockerfile: images/cms-printing/Dockerfile
     image: "cms-printing:latest"
     container_name: "cms-printing"
-    restart: on-failure
+    restart: unless-stopped
     env_file: 
       - ".env"
       - "config/config.env"
@@ -97,7 +97,7 @@ services:
       dockerfile: images/cms-evaluation/Dockerfile
     image: "cms-evaluation:latest"
     container_name: "cms-evaluation"
-    restart: on-failure
+    restart: unless-stopped
     env_file: 
       - ".env"
       - "config/config.env"
@@ -111,7 +111,7 @@ services:
       dockerfile: images/cms-checker/Dockerfile
     image: "cms-checker:latest"
     container_name: "cms-checker"
-    restart: on-failure
+    restart: unless-stopped
     env_file: 
       - ".env"
       - "config/config.env"
@@ -140,7 +140,7 @@ services:
       dockerfile: images/cms-web-ranking/Dockerfile
     image: "cms-web-ranking:latest"
     container_name: "cms-web-ranking"
-    restart: on-failure
+    restart: unless-stopped
     env_file: 
       - ".env"
       - "config/config.env"
@@ -156,7 +156,7 @@ services:
       dockerfile: images/cms-web-admin/Dockerfile
     image: "cms-web-admin:latest"
     container_name: "cms-web-admin"
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - "8889:8889"
     expose:
@@ -172,7 +172,7 @@ services:
       dockerfile: images/cms-web-contest/Dockerfile
     image: "cms-web-contest:latest"
     container_name: "cms-web-contest"
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - "8888:8888"
     expose:
@@ -190,7 +190,7 @@ services:
       dockerfile: images/cms-worker/Dockerfile
     image: "cms-worker:latest"
     container_name: "cms-worker-0"
-    restart: on-failure
+    restart: unless-stopped
     expose:
       - "26000"
     env_file: 
@@ -209,7 +209,7 @@ services:
       dockerfile: images/cms-worker/Dockerfile
     image: "cms-worker:latest"
     container_name: "cms-worker-1"
-    restart: on-failure
+    restart: unless-stopped
     expose:
       - "26000"
     env_file: 
@@ -228,7 +228,7 @@ services:
       dockerfile: images/cms-worker/Dockerfile
     image: "cms-worker:latest"
     container_name: "cms-worker-2"
-    restart: on-failure
+    restart: unless-stopped
     expose:
       - "26000"
     env_file: 
@@ -247,7 +247,7 @@ services:
       dockerfile: images/cms-worker/Dockerfile
     image: "cms-worker:latest"
     container_name: "cms-worker-3"
-    restart: on-failure
+    restart: unless-stopped
     expose:
       - "26000"
     env_file: 
