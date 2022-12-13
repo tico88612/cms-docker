@@ -97,6 +97,7 @@ services:
       dockerfile: images/cms-evaluation/Dockerfile
     image: "cms-evaluation:latest"
     container_name: "cms-evaluation"
+    restart: on-failure
     env_file: 
       - ".env"
       - "config/config.env"
