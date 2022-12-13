@@ -145,7 +145,7 @@ services:
       - ".env"
       - "config/config.env"
     volumes:
-      - "./data/ranking:/var/local/lib/cms/ranking"
+      - "./data/ranking:/cms/lib/ranking"
     ports:
       - "8890:8890"
     depends_on:
