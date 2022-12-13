@@ -7,11 +7,14 @@ services:
     restart: on-failure
     environment:
       - POSTGRES_DB=cmsdb
-      - POSTGRES_USER=cmsuser
-      - POSTGRES_PASSWORD=example
+    env_file: 
+      - ".env"
     volumes:
       - "./data/db:/var/lib/postgresql/data"
   cms-db-init:
+    build: 
+      context: .
+      dockerfile: images/cms-db-init/Dockerfile
     image: "tico88612/cms-db-init:latest"
     container_name: "cms-db-init"
     depends_on:
