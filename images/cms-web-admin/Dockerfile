@@ -1,4 +1,4 @@
-FROM tico88612/cms-base:latest
+FROM cms-base:latest
 
 COPY images/cms-web-admin/web-admin-entrypoint.sh /scripts
 RUN chown -R cmsuser /scripts

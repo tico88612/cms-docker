@@ -5,8 +5,6 @@ services:
     image: "postgres:14"
     container_name: "cms-db"
     restart: on-failure
-    environment:
-      - POSTGRES_DB=cmsdb
     env_file: 
       - ".env"
     volumes:
@@ -15,7 +13,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-db-init/Dockerfile
-    image: "tico88612/cms-db-init:latest"
+    image: "cms-db-init:latest"
     container_name: "cms-db-init"
     depends_on:
       - cms-db
@@ -26,7 +24,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-log/Dockerfile
-    image: "tico88612/cms-log:latest"
+    image: "cms-log:latest"
     container_name: "cms-log"
     restart: on-failure
     env_file: 
@@ -40,7 +38,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-scoring/Dockerfile
-    image: "tico88612/cms-scoring:latest"
+    image: "cms-scoring:latest"
     container_name: "cms-scoring"
     restart: on-failure
     env_file: 
@@ -54,7 +52,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-resource/Dockerfile
-    image: "tico88612/cms-resource:latest"
+    image: "cms-resource:latest"
     container_name: "cms-resource"
     restart: on-failure
     env_file: 
@@ -68,7 +66,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-proxy/Dockerfile
-    image: "tico88612/cms-proxy:latest"
+    image: "cms-proxy:latest"
     container_name: "cms-proxy"
     restart: on-failure
     env_file: 
@@ -83,7 +81,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-printing/Dockerfile
-    image: "tico88612/cms-printing:latest"
+    image: "cms-printing:latest"
     container_name: "cms-printing"
     restart: on-failure
     env_file: 
@@ -97,7 +95,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-evaluation/Dockerfile
-    image: "tico88612/cms-evaluation:latest"
+    image: "cms-evaluation:latest"
     container_name: "cms-evaluation"
     env_file: 
       - ".env"
@@ -110,7 +108,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-checker/Dockerfile
-    image: "tico88612/cms-checker:latest"
+    image: "cms-checker:latest"
     container_name: "cms-checker"
     restart: on-failure
     env_file: 
@@ -139,7 +137,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-web-ranking/Dockerfile
-    image: "tico88612/cms-web-ranking:latest"
+    image: "cms-web-ranking:latest"
     container_name: "cms-web-ranking"
     restart: on-failure
     env_file: 
@@ -155,7 +153,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-web-admin/Dockerfile
-    image: "tico88612/cms-web-admin:latest"
+    image: "cms-web-admin:latest"
     container_name: "cms-web-admin"
     restart: on-failure
     ports:
@@ -171,7 +169,7 @@ services:
     build: 
       context: .
       dockerfile: images/cms-web-contest/Dockerfile
-    image: "tico88612/cms-web-contest:latest"
+    image: "cms-web-contest:latest"
     container_name: "cms-web-contest"
     restart: on-failure
     ports:
@@ -189,7 +187,7 @@ services:
     build:
       context: .
       dockerfile: images/cms-worker/Dockerfile
-    image: "tico88612/cms-worker:latest"
+    image: "cms-worker:latest"
     container_name: "cms-worker-0"
     restart: on-failure
     expose:
@@ -208,7 +206,7 @@ services:
     build:
       context: .
       dockerfile: images/cms-worker/Dockerfile
-    image: "tico88612/cms-worker:latest"
+    image: "cms-worker:latest"
     container_name: "cms-worker-1"
     restart: on-failure
     expose:
@@ -227,7 +225,7 @@ services:
     build:
       context: .
       dockerfile: images/cms-worker/Dockerfile
-    image: "tico88612/cms-worker:latest"
+    image: "cms-worker:latest"
     container_name: "cms-worker-2"
     restart: on-failure
     expose:
@@ -246,7 +244,7 @@ services:
     build:
       context: .
       dockerfile: images/cms-worker/Dockerfile
-    image: "tico88612/cms-worker:latest"
+    image: "cms-worker:latest"
     container_name: "cms-worker-3"
     restart: on-failure
     expose:

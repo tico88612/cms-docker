@@ -1,4 +1,4 @@
-FROM tico88612/cms-base:latest
+FROM cms-base:latest
 
 COPY config /cms/config
 

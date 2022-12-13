@@ -4,6 +4,7 @@ RUN mkdir /cms
 RUN mkdir /scripts
 
 ENV PYTHONPATH=/cms
+ENV HOME=/cms
 WORKDIR /cms
 
 # copy cms system

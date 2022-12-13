@@ -1,4 +1,4 @@
-FROM tico88612/cms-base:latest
+FROM cms-base:latest
 
 RUN apt update && \
     apt install -yy --no-install-recommends \
