@@ -86,7 +86,15 @@ docker buildx build -f images/cms-base/Dockerfile . -t cms-base:latest
 docker compose up -d
 ```
 
-5. Add contest & have fun!
+5. Login to Admin system & Create contest.
+
+```
+Contest: http://localhost:8888
+Admin: http://localhost:8889
+Ranking: http://localhost:8890
+```
+
+6. Have fun!
 
 ## Other & TO-DO List
 
