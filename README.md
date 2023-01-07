@@ -7,6 +7,7 @@ This version is following [ioi/cms](https://github.com/ioi/cms).
 | System | Support |
 | :--- | :---: |
 | Ubuntu 20.04 | ✅ |
+| Ubuntu 22.04 | ✅, Need to enable cgroup v1 |
 | Windows Subsystem Linux (Ubuntu 22.04) | ✅ |
 | macOS | ⚠️ |
 
