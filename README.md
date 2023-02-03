@@ -78,6 +78,9 @@ vim .env # Edit .env
 3. Build `cms-base:latest` image.
 
 ```bash
+# Docker build
+docker build -f images/cms-base/Dockerfile . -t cms-base:latest
+# If you have install Buildx, you can try this
 docker buildx build -f images/cms-base/Dockerfile . -t cms-base:latest
 ```
 
