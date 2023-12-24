@@ -66,16 +66,22 @@ Follow this [manual](https://docs.docker.com/engine/install/ubuntu/#install-usin
 
 ## Installation
 
-1. If you want to change worker number, edit `config/cms.conf` and `docker-compose.yml`
+1. Clone this project (include submodules)
 
-2. Copy `.env.example` to `.env` and edit `CMS_SECRET_KEY`, `CMS_ADMIN_PASSWORD`, `CMS_RANKING_PASSWORD` etc. (Contest has not been created yet, don't touch `CMS_CONTEST_ID` before creating the contest.)
+```
+git clone --recursive https://github.com/tico88612/cms-docker.git
+```
+
+2. If you want to change worker number, edit `config/cms.conf` and `docker-compose.yml`
+
+3. Copy `.env.example` to `.env` and edit `CMS_SECRET_KEY`, `CMS_ADMIN_PASSWORD`, `CMS_RANKING_PASSWORD` etc. (Contest has not been created yet, don't touch `CMS_CONTEST_ID` before creating the contest.)
 
 ```bash
 cp .env.example .env
 vim .env # Edit .env
 ```
 
-3. Build `cms-base:latest` image.
+4. Build `cms-base:latest` image.
 
 ```bash
 # Docker build
@@ -84,13 +90,13 @@ docker build -f images/cms-base/Dockerfile . -t cms-base:latest
 docker buildx build -f images/cms-base/Dockerfile . -t cms-base:latest
 ```
 
-4. Up all service
+5. Up all service
 
 ```bash
 docker compose up -d
 ```
 
-5. Login to Admin system & Create contest.
+6. Login to Admin system & Create contest.
 
 ```
 Contest: http://localhost:8888
@@ -98,7 +104,7 @@ Admin: http://localhost:8889
 Ranking: http://localhost:8890
 ```
 
-6. Have fun!
+7. Have fun!
 
 ## Other & TO-DO List
 
